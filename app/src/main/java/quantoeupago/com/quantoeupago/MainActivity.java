@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
     EditText etQuantidadeDePessoas;
     Button btQuantoEuPago;
 
-    int valorTotal = 0;
-    int quantidadeDePessoas = 0;
+    int valorTotal;
+    int quantidadeDePessoas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
