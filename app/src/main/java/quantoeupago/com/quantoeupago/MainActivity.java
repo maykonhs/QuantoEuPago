@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etQuantidadeDePessoas;
     Button btQuantoEuPago;
 
-    int valorTotal;
+    double valorTotal;
     int quantidadeDePessoas;
 
     @Override
@@ -29,17 +29,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                valorTotal = Integer.parseInt(etValorTotal.getText().toString());
-                quantidadeDePessoas = Integer.parseInt(etQuantidadeDePessoas.getText().toString());
+                if (etValorTotal != null && etQuantidadeDePessoas != null) {
+                    valorTotal = Double.parseDouble(etValorTotal.getText().toString());
+                    quantidadeDePessoas = Integer.parseInt(etQuantidadeDePessoas.getText().toString());
 
-                Bundle bundle = getIntent().getExtras();
+                    Intent intent = new Intent(MainActivity.this, ResultadoActivity.class);
 
-                bundle.putInt("ValorTotal", valorTotal);
-                bundle.putInt("Quantidade", quantidadeDePessoas);
+                    intent.putExtra("ValorTotal", valorTotal);
+                    intent.putExtra("Quantidade", quantidadeDePessoas);
 
-                Intent intent = new Intent(MainActivity.this, ResultadoActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                    startActivity(intent);
+                }
+
             }
         });
 
