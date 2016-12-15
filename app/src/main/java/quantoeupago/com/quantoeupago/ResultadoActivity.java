@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ResultadoActivity extends AppCompatActivity {
 
     ListView lvResultado;
+    ListaCustomizadaAdapter adapter;
 
     public void quantoEuPago(int qtd, double valorTotal) {
         double valorPorPessoa = valorTotal / qtd;
@@ -26,8 +30,25 @@ public class ResultadoActivity extends AppCompatActivity {
         for (int i=0; i<valores.length; i++) {
             valoresLista[i] = String.valueOf(valores[i]);
         }
-        ArrayAdapter<String> valuesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, valoresLista);
-        lvResultado.setAdapter(valuesAdapter);
+
+        geraListaIndividual(valoresLista);
+//        ArrayAdapter<String> valuesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, valoresLista);
+//        lvResultado.setAdapter(valuesAdapter);
+    }
+
+    public void geraListaIndividual(String[] listaDeValores) {
+        List<String> listaValor = new ArrayList<>();
+        List<String> listaPosicao = new ArrayList<>();
+        for (int i=0; i<listaDeValores.length; i++) {
+            listaValor.add(listaDeValores[i]);
+            listaPosicao.add(listaDeValores[i]);
+
+            ListaCustomizadaAdapter adapter = new ListaCustomizadaAdapter(this, listaValor, listaPosicao);
+            lvResultado.setAdapter(adapter);
+        }
+
+
+        return;
     }
 
     @Override
