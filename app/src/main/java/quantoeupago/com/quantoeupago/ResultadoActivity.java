@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +16,13 @@ public class ResultadoActivity extends AppCompatActivity {
     ListaCustomizadaAdapter adapter;
 
     public void quantoEuPago(int qtd, double valorTotal) {
+        DecimalFormat formato = new DecimalFormat("#.##");
         double valorPorPessoa = valorTotal / qtd;
         double[] valores = new double[qtd];
 
         for (int i=0; i<qtd; i++) {
             valores[i] = valorPorPessoa * (i+1);
+            valores[i] = Double.valueOf(formato.format(valores[i]));
         }
         geraLista(valores);
         return ;
@@ -39,9 +42,15 @@ public class ResultadoActivity extends AppCompatActivity {
     public void geraListaIndividual(String[] listaDeValores) {
         List<String> listaValor = new ArrayList<>();
         List<String> listaPosicao = new ArrayList<>();
+
         for (int i=0; i<listaDeValores.length; i++) {
-            listaValor.add(listaDeValores[i]);
-            listaPosicao.add(listaDeValores[i]);
+            listaValor.add("R$ " + listaDeValores[i]);
+
+            if (i>=1) {
+                listaPosicao.add((i+1) + " Pessoas");
+            } else {
+                listaPosicao.add((i+1) + " Pessoa");
+            }
 
             ListaCustomizadaAdapter adapter = new ListaCustomizadaAdapter(this, listaValor, listaPosicao);
             lvResultado.setAdapter(adapter);

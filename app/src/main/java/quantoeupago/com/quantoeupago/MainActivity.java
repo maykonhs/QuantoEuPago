@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                     valorTotal = Double.parseDouble(etValorTotal.getText().toString());
                     quantidadeDePessoas = Integer.parseInt(etQuantidadeDePessoas.getText().toString());
 
+
+
                     Intent intent = new Intent(MainActivity.this, ResultadoActivity.class);
 
                     intent.putExtra("ValorTotal", valorTotal);
