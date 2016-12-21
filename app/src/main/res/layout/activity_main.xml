@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
         android:inputType="numberDecimal"
-        android:textSize="40dp"
+        android:textSize="30dp"
         android:textAlignment="center"
         android:hint="R$"/>
 
@@ -26,12 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
         android:inputType="number"
-        android:textSize="40dp"
+        android:textSize="30dp"
         android:textAlignment="center"
         android:hint="Quantidade"/>
 
     <Button
         android:id="@+id/btquantoeupago"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_below="@id/etqtddepessoas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

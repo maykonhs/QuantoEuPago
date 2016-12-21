@@ -16,13 +16,11 @@ public class ResultadoActivity extends AppCompatActivity {
     ListaCustomizadaAdapter adapter;
 
     public void quantoEuPago(int qtd, double valorTotal) {
-        DecimalFormat formato = new DecimalFormat("#.##");
         double valorPorPessoa = valorTotal / qtd;
         double[] valores = new double[qtd];
 
         for (int i=0; i<qtd; i++) {
             valores[i] = valorPorPessoa * (i+1);
-            valores[i] = Double.valueOf(formato.format(valores[i]));
         }
         geraLista(valores);
         return ;
@@ -35,8 +33,6 @@ public class ResultadoActivity extends AppCompatActivity {
         }
 
         geraListaIndividual(valoresLista);
-//        ArrayAdapter<String> valuesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, valoresLista);
-//        lvResultado.setAdapter(valuesAdapter);
     }
 
     public void geraListaIndividual(String[] listaDeValores) {
